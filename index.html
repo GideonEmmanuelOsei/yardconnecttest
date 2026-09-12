@@ -504,7 +504,7 @@
       flex-direction:column;
       justify-content:flex-start;
     }
-    .hero h1{ font-size:clamp(40px,14vw,240px); }
+    .hero h1{ font-size:clamp(32px,10.5vw,240px); white-space:normal; }
     .hero-title-wrap{ margin-bottom:16px; }
     .hero-eyebrow{ margin-bottom:10px; }
     .hero-sub{ margin-top:14px; font-size:15px; }
@@ -1153,10 +1153,15 @@
     heroH1.textContent = '';
     let i = 0;
     for(const ch of text){
+      if(ch === ' '){
+        heroH1.appendChild(document.createTextNode(' '));
+        i++;
+        continue;
+      }
       const span = document.createElement('span');
       span.className = 'letter';
       span.style.setProperty('--i', i);
-      span.textContent = ch === ' ' ? '\u00A0' : ch;
+      span.textContent = ch;
       heroH1.appendChild(span);
       i++;
     }
