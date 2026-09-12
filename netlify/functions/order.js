@@ -89,8 +89,11 @@ Phone: ${phone}`;
       },
     });
 
+    const fromAddress = process.env.SMTP_FROM || process.env.SMTP_USER;
+    const fromName = process.env.SMTP_FROM_NAME || 'Yard Connect Orders';
+
     await transporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      from: `"${fromName}" <${fromAddress}>`,
       to: process.env.OWNER_EMAIL_TO,
       subject: `New Yard Connect order — GHS ${total} (${name})`,
       text: message,
