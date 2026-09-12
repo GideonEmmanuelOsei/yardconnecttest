@@ -303,7 +303,7 @@
   .pmodal-overlay.open{opacity:1; pointer-events:auto;}
   .pmodal{
     background:var(--paper); color:var(--black);
-    width:100%; max-width:880px; max-height:calc(100vh - 48px);
+    width:100%; max-width:880px; max-height:calc(100vh - 48px); max-height:calc(100dvh - 48px);
     overflow-y:auto;
     display:grid; grid-template-columns:1fr 1fr;
     position:relative;
@@ -365,7 +365,7 @@
 
   @media (max-width:700px){
     .pmodal{ grid-template-columns:1fr; }
-    .pmodal-img{ aspect-ratio:4/5; height:auto; min-height:0; }
+    .pmodal-img{ aspect-ratio:4/5; height:auto; min-height:0; max-height:38vh; max-height:38dvh; }
     .pmodal-img img{ padding:14px; }
     .pmodal-details{ padding:16px 18px; gap:10px; }
     .pmodal-cat{ font-size:11px; }
