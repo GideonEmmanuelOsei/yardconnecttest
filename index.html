@@ -111,10 +111,17 @@
     line-height:0.92;
     letter-spacing:-0.02em;
     white-space:nowrap;
-    opacity:0; transform:translateY(24px);
-    animation:reveal 0.7s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
   }
-  @keyframes reveal{ to{opacity:1; transform:translateY(0);} }
+  .hero h1 .letter{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(0.6em) rotate(6deg);
+    animation:letterIn 0.65s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay:calc(var(--i) * 35ms + 100ms);
+  }
+  @keyframes letterIn{
+    to{ opacity:1; transform:translateY(0) rotate(0); }
+  }
   .hero-meta{
     display:flex; flex-direction:column; gap:14px;
     border-left:2px solid var(--orange);
@@ -462,7 +469,7 @@
   #merch .section-head h2{ font-size:clamp(44px,7vw,84px); }
   #merch .section-head p{ font-size:17px; max-width:48ch; }
   #merch .merch-head{ flex-direction:column; align-items:flex-start; gap:10px; }
-  #merch .section-head p.merch-head-note{ margin:0; font-size:13px; max-width:52ch; color:var(--grey); }
+  #merch .section-head p.merch-head-note{ margin:0; font-size:17px; max-width:none; color:var(--grey); }
   #merch .merch-grid{ grid-template-columns:repeat(3,1fr); gap:32px; }
   #merch .product-img{ aspect-ratio:4/5; }
   #merch .product-info{ padding:22px; }
@@ -481,6 +488,7 @@
     #merch{ padding:48px 0 56px; }
     #merch .section-head{ margin-bottom:24px; }
     #merch .section-head h2{ font-size:clamp(36px,12vw,60px); }
+    #merch .section-head p.merch-head-note{ font-size:15px; }
     #merch .merch-grid{
       display:flex;
       grid-template-columns:none;
@@ -534,7 +542,7 @@
     </div>
     <div class="wrap hero-grid">
       <div>
-        <p class="hero-sub">A night of live sets, street style and local sound. Tickets get you in the door — merch gets you in the crowd before you even arrive.</p>
+        <p class="hero-sub">Welcome to the website of the BIGGEST PARTYYYYY! to hit the western part of Ghana, everything you see and feel is curated by THE COLLEKTEEV.</p>
         <div class="hero-cta">
           <a href="#tickets" class="btn-primary">Ticket info</a>
           <a href="#merch" class="btn-secondary">Shop merch</a>
@@ -1007,6 +1015,22 @@
   window.addEventListener('scroll', () => {
     headerEl.classList.toggle('scrolled', window.scrollY > 12);
   });
+
+  // split hero heading into animated letters
+  const heroH1 = document.querySelector('.hero h1');
+  if(heroH1){
+    const text = heroH1.textContent;
+    heroH1.textContent = '';
+    let i = 0;
+    for(const ch of text){
+      const span = document.createElement('span');
+      span.className = 'letter';
+      span.style.setProperty('--i', i);
+      span.textContent = ch === ' ' ? '\u00A0' : ch;
+      heroH1.appendChild(span);
+      i++;
+    }
+  }
 
   // Section header reveal on scroll into view
   const revealTargets = document.querySelectorAll('.section-head');
