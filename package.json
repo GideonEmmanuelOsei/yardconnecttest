@@ -1,0 +1,10 @@
+{
+  "name": "yard-connect-order-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless function that forwards Yard Connect orders to WhatsApp and email",
+  "dependencies": {
+    "twilio": "^4.23.0",
+    "nodemailer": "^6.9.13"
+  }
+}
