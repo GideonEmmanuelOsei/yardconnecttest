@@ -425,10 +425,19 @@
     .info-grid{grid-template-columns:1fr; gap:32px;}
     .nav-links{display:none;}
   }
+  @media (max-width:700px){
+    .section{ padding:48px 0; }
+  }
   @media (max-width:520px){
     .merch-grid{grid-template-columns:1fr;}
     .tickets{grid-template-columns:1fr;}
-    .hero{padding:70px 0 44px;}
+    .hero{padding:56px 0 32px;}
+    .hero h1{ font-size:clamp(40px,14vw,240px); }
+    .hero-title-wrap{ margin-bottom:16px; }
+    .hero-eyebrow{ margin-bottom:10px; }
+    .hero-sub{ margin-top:14px; font-size:15px; }
+    .hero-cta{ margin-top:20px; }
+    .hero-grid{ gap:20px; }
   }
 
   /* ---------- TICKETS: MINIMIZED ---------- */
@@ -452,8 +461,8 @@
   #merch .section-head{ margin-bottom:56px; }
   #merch .section-head h2{ font-size:clamp(44px,7vw,84px); }
   #merch .section-head p{ font-size:17px; max-width:48ch; }
-  #merch .merch-head{ justify-content:flex-start; align-items:baseline; gap:20px 24px; }
-  #merch .merch-head-note{ margin:0; }
+  #merch .merch-head{ flex-direction:column; align-items:flex-start; gap:10px; }
+  #merch .section-head p.merch-head-note{ margin:0; font-size:13px; max-width:52ch; color:var(--grey); }
   #merch .merch-grid{ grid-template-columns:repeat(3,1fr); gap:32px; }
   #merch .product-img{ aspect-ratio:4/5; }
   #merch .product-info{ padding:22px; }
@@ -468,9 +477,32 @@
   @media (max-width:900px){
     #merch .merch-grid{ grid-template-columns:repeat(2,1fr); }
   }
-  @media (max-width:520px){
-    #merch .merch-grid{ grid-template-columns:1fr; }
-    #merch{ padding:70px 0 80px; }
+  @media (max-width:700px){
+    #merch{ padding:48px 0 56px; }
+    #merch .section-head{ margin-bottom:24px; }
+    #merch .section-head h2{ font-size:clamp(36px,12vw,60px); }
+    #merch .merch-grid{
+      display:flex;
+      grid-template-columns:none;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      gap:10px;
+      margin:0 -24px;
+      padding:0 24px 6px;
+    }
+    #merch .merch-grid::-webkit-scrollbar{ display:none; }
+    #merch .merch-grid .product{
+      flex:0 0 calc(33.4% - 7px);
+      min-width:112px;
+      scroll-snap-align:start;
+    }
+    #merch .product-info{ padding:10px; }
+    #merch .product-info .name{ font-size:12px; margin-bottom:2px; }
+    #merch .product-info .cat{ font-size:10px; margin-bottom:6px; }
+    #merch .product-price{ font-size:13px; }
+    #merch .product-add{ font-size:10px; padding:6px 8px; }
   }
 </style>
 </head>
