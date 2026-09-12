@@ -498,6 +498,11 @@
     .tickets{grid-template-columns:1fr;}
     .hero{
       padding:56px 0 32px;
+      min-height:calc(100vh - var(--header-h, 64px));
+      min-height:calc(100dvh - var(--header-h, 64px));
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
     }
     .hero h1{ font-size:clamp(40px,14vw,240px); }
     .hero-title-wrap{ margin-bottom:16px; }
