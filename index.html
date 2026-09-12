@@ -134,6 +134,13 @@
   @keyframes letterIn{
     to{ opacity:1; transform:translateY(0) rotate(0); }
   }
+  .hero h1.glow-loop{
+    animation:heroGlow 2.8s ease-in-out infinite;
+  }
+  @keyframes heroGlow{
+    0%, 100%{ text-shadow:0 0 0 rgba(255,90,31,0); }
+    50%{ text-shadow:0 0 26px rgba(255,90,31,.55), 0 0 50px rgba(255,90,31,.22); }
+  }
   .hero-meta{
     display:flex; flex-direction:column; gap:14px;
     border-left:2px solid var(--orange);
@@ -142,7 +149,7 @@
   .hero-meta .row{font-size:15px; color:var(--paper);}
   .hero-meta .label{color:var(--grey); font-size:12px; display:block; margin-bottom:2px;}
   .hero-sub{
-    margin-top:28px; font-size:17px; color:var(--grey); max-width:60ch; line-height:1.5;
+    margin-top:28px; font-size:17px; color:var(--grey); max-width:60ch; line-height:1.25;
   }
   .hero-cta{
     margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;
@@ -168,6 +175,7 @@
   .tickets{
     display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
   }
+  .tickets-cta{ margin-top:28px; text-align:center; }
   .ticket{
     background:var(--paper); color:var(--black);
     position:relative;
@@ -334,7 +342,7 @@
   /* ---------- INFO / ABOUT ---------- */
   .info-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
   .info-grid h2{font-size:clamp(30px,4vw,44px); margin-bottom:20px;}
-  .info-grid p{color:var(--grey); font-size:16px; line-height:1.65; max-width:52ch;}
+  .info-grid p{color:var(--grey); font-size:16px; line-height:1.3; max-width:52ch;}
   .facts{display:flex; flex-direction:column; gap:0;}
   .fact{
     display:flex; justify-content:space-between; align-items:baseline;
@@ -351,6 +359,9 @@
   .footer-logo span{color:var(--orange);}
   .footer-links{display:flex; gap:24px; font-size:14px; color:var(--grey);}
   .footer-links a:hover{color:var(--orange);}
+  @media (max-width:700px){
+    .footer-links{ display:none; }
+  }
   .footer-bottom{
     margin-top:36px; padding-top:20px; border-top:1px solid var(--grey-line);
     font-size:12px; color:var(--grey); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
@@ -446,6 +457,7 @@
   }
   @media (max-width:700px){
     .section{ padding:48px 0; }
+    .info-grid p{ font-size:13.5px; }
   }
   @media (max-width:520px){
     .merch-grid{grid-template-columns:1fr;}
@@ -474,6 +486,18 @@
   #tickets .ticket-bottom{ padding:10px 14px; }
   #tickets .ticket-price{ font-size:16px; }
   #tickets .ticket-add{ padding:6px 12px; font-size:11px; }
+  #tickets .tickets-cta{ margin-top:18px; }
+  #tickets .tickets-cta .btn-primary{ font-size:13px; padding:10px 22px; }
+
+  @media (max-width:520px){
+    #tickets .section-head h2{ font-size:18px; }
+    #tickets .section-head p{ font-size:11px; }
+    #tickets .ticket-top{ padding:12px 12px 4px; }
+    #tickets .ticket h3{ font-size:14px; margin-bottom:4px; }
+    #tickets .ticket ul{ font-size:10px; }
+    #tickets .ticket-price{ font-size:14px; }
+    #tickets .ticket-bottom{ padding:8px 12px; }
+  }
 
   /* ---------- MERCH: MAXIMIZED ---------- */
   #merch{ padding:120px 0 140px; border-bottom:3px solid var(--orange); }
@@ -500,7 +524,7 @@
     #merch{ padding:48px 0 56px; }
     #merch .section-head{ margin-bottom:24px; }
     #merch .section-head h2{ font-size:clamp(36px,12vw,60px); }
-    #merch .section-head p.merch-head-note{ font-size:15px; }
+    #merch .section-head p.merch-head-note{ font-size:12.5px; }
     #merch .merch-grid{
       display:flex;
       grid-template-columns:none;
@@ -724,6 +748,9 @@
         </div>
 
       </div>
+      <div class="tickets-cta">
+        <a href="https://egotickets.com/events/yard-connect-rave-party" class="btn-primary" target="_blank" rel="noopener">Get Tickets</a>
+      </div>
     </div>
   </section>
 
@@ -733,12 +760,12 @@
       <div>
         <h2>What to know</h2>
         <p>Yard Connect started as a house party in 2023, and after tempting fate we made it an outdoor event. Year after year we kept growing, and this year we're celebrating our 4th year in style — in an open space bigger than ever.</p>
-        <p style="margin-top:16px;">Merch ordered before 13 Dec ships to your address. Anything ordered after that date is held for pickup at the event's merch booth.</p>
+        <p style="margin-top:16px; color:var(--orange);">Merch ordered before 13 Dec ships to your address. Anything ordered after that date is held for pickup at the event's merch booth.</p>
       </div>
       <div class="facts">
-        <div class="fact"><span class="k">Age policy</span><span class="v">18+, ID required at entry</span></div>
-        <div class="fact"><span class="k">Payment</span><span class="v">Mobile money & major cards</span></div>
-        <div class="fact"><span class="k">Contact</span><span class="v">hello@yardconnect.gh</span></div>
+        <div class="fact"><span class="k">Age policy</span><span class="v">18+</span></div>
+        <div class="fact"><span class="k">Tickets Available</span><span class="v">NAJGold Office Opp. Town Park</span></div>
+        <div class="fact"><span class="k">Contact</span><span class="v">0503457268 / 0500482841 / 0245289983</span></div>
       </div>
     </div>
   </section>
@@ -753,11 +780,11 @@
         <a href="#merch">Merch</a>
         <a href="#tickets">Tickets</a>
         <a href="#info">Info</a>
-        <a href="mailto:hello@yardconnect.gh">Contact</a>
+        <a href="tel:+233503457268">Contact</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 YARD CONNECT. All rights reserved.</span>
+      <span>&copy; 2026 THE COLLEKTEEV. All rights reserved.</span>
       <span>Bogoso, Ghana</span>
     </div>
   </div>
@@ -1053,6 +1080,9 @@
       heroH1.appendChild(span);
       i++;
     }
+    // after the letters finish cascading in, ease into a continuous ambient glow
+    const revealMs = i * 35 + 100 + 650;
+    setTimeout(() => { heroH1.classList.add('glow-loop'); }, revealMs);
   }
 
   // Section header reveal on scroll into view
