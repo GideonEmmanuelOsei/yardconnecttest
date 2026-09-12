@@ -440,6 +440,11 @@
   .cart-item .remove{font-size:12px; color:var(--rust); margin-top:6px; text-decoration:underline;}
   .cart-empty{padding:40px 0; text-align:center; color:#8a8880; font-size:14px;}
   .cart-foot{padding:20px 24px; border-top:1px solid var(--grey-line-dark);}
+  .cart-drawer.order-complete .cart-items{ display:none; }
+  .cart-drawer.order-complete .cart-foot{
+    flex:1; display:flex; flex-direction:column; justify-content:center;
+    border-top:none;
+  }
   .cart-total{display:flex; justify-content:space-between; font-weight:700; font-size:17px; margin-bottom:16px;}
   .cart-checkout{
     width:100%; background:var(--black); color:var(--paper);
@@ -468,26 +473,26 @@
   .cart-confirm{display:none; text-align:center; padding:12px 0 4px;}
   .cart-confirm.show{display:block;}
   .pack-scene{
-    position:relative; height:64px; margin-bottom:6px;
+    position:relative; height:92px; margin-bottom:14px;
     display:flex; align-items:flex-end; justify-content:center;
   }
   .pack-box{
-    font-size:36px; line-height:1; position:relative; z-index:1;
+    font-size:52px; line-height:1; position:relative; z-index:1;
     display:inline-block;
     animation:pack-box 3s ease-in-out infinite;
   }
   .pack-item{
     position:absolute; top:0; left:50%;
-    font-size:20px; line-height:1;
+    font-size:28px; line-height:1;
     opacity:0;
     animation-duration:3s; animation-timing-function:ease-in-out; animation-iteration-count:infinite;
   }
-  .pack-item.p1{ margin-left:-30px; animation-name:pack-p1; }
-  .pack-item.p2{ margin-left:2px; animation-name:pack-p2; }
-  .pack-item.p3{ margin-left:-10px; animation-name:pack-p3; }
+  .pack-item.p1{ margin-left:-43px; animation-name:pack-p1; }
+  .pack-item.p2{ margin-left:3px; animation-name:pack-p2; }
+  .pack-item.p3{ margin-left:-14px; animation-name:pack-p3; }
   .pack-check{
-    position:absolute; top:-2px; right:calc(50% - 34px);
-    font-size:18px; opacity:0; z-index:2;
+    position:absolute; top:-4px; right:calc(50% - 48px);
+    font-size:24px; opacity:0; z-index:2;
     animation:pack-check 3s ease-out infinite;
   }
   @keyframes pack-p1{
@@ -522,9 +527,9 @@
     95%{ opacity:1; transform:scale(1) rotate(0); }
     100%{ opacity:0; transform:scale(1) rotate(0); }
   }
-  .cart-confirm .big{font-weight:700; font-size:17px; margin-bottom:8px;}
-  .cart-confirm .sub{font-size:13px; color:#5a5a56; margin-bottom:10px; line-height:1.5;}
-  .cart-confirm .num{font-weight:700; color:var(--rust); font-size:16px;}
+  .cart-confirm .big{font-weight:700; font-size:26px; margin-bottom:12px;}
+  .cart-confirm .sub{font-size:15px; color:#5a5a56; margin-bottom:14px; line-height:1.6; max-width:32ch; margin-left:auto; margin-right:auto;}
+  .cart-confirm .num{font-weight:700; color:var(--rust); font-size:20px;}
 
   /* ---------- ANIMATION ---------- */
   header{ transition:background 0.25s ease, border-color 0.25s ease; }
@@ -1087,6 +1092,7 @@
     // A fresh add-to-cart after an order was placed means a new order is starting
     document.getElementById('cartConfirm').classList.remove('show');
     document.getElementById('cartForm').style.display = '';
+    drawer.classList.remove('order-complete');
 
     const countEl = document.getElementById('cartCount');
     countEl.classList.remove('bump');
@@ -1384,6 +1390,7 @@
 
       document.getElementById('cartForm').style.display = 'none';
       document.getElementById('cartConfirm').classList.add('show');
+      drawer.classList.add('order-complete');
 
       cart = [];
       renderCart();
