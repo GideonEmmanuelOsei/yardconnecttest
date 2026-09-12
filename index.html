@@ -98,6 +98,18 @@
     position:relative;
     overflow:hidden;
   }
+  .hero-video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    z-index:0;
+  }
+  .hero-video-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(14,14,14,.55) 0%, rgba(14,14,14,.75) 55%, rgba(14,14,14,.92) 100%);
+    z-index:1;
+  }
+  .hero > .wrap{ position:relative; z-index:2; }
   .hero-grid{
     display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:end;
   }
@@ -502,15 +514,15 @@
     }
     #merch .merch-grid::-webkit-scrollbar{ display:none; }
     #merch .merch-grid .product{
-      flex:0 0 calc(33.4% - 7px);
-      min-width:112px;
+      flex:0 0 60%;
+      min-width:210px;
       scroll-snap-align:start;
     }
-    #merch .product-info{ padding:10px; }
-    #merch .product-info .name{ font-size:12px; margin-bottom:2px; }
-    #merch .product-info .cat{ font-size:10px; margin-bottom:6px; }
-    #merch .product-price{ font-size:13px; }
-    #merch .product-add{ font-size:10px; padding:6px 8px; }
+    #merch .product-info{ padding:16px; }
+    #merch .product-info .name{ font-size:16px; margin-bottom:4px; }
+    #merch .product-info .cat{ font-size:12px; margin-bottom:12px; }
+    #merch .product-price{ font-size:17px; }
+    #merch .product-add{ font-size:13px; padding:8px 14px; }
   }
 </style>
 </head>
@@ -534,6 +546,8 @@
 
   <!-- HERO -->
   <section class="hero">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto"></video>
+    <div class="hero-video-overlay"></div>
     <div class="wrap">
       <div class="hero-title-wrap">
         <div class="hero-eyebrow">Live yours with us, one night of RAVE!</div>
@@ -1015,6 +1029,15 @@
   window.addEventListener('scroll', () => {
     headerEl.classList.toggle('scrolled', window.scrollY > 12);
   });
+
+  // pick the right hero background clip for the viewport
+  const heroVideo = document.getElementById('heroVideo');
+  if(heroVideo){
+    const isMobile = window.matchMedia('(max-width:700px)').matches;
+    heroVideo.src = isMobile ? 'hero-bg-mobile.mp4' : 'hero-bg.mp4';
+    heroVideo.load();
+    heroVideo.play().catch(() => {});
+  }
 
   // split hero heading into animated letters
   const heroH1 = document.querySelector('.hero h1');
