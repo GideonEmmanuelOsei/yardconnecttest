@@ -532,6 +532,7 @@
   .cart-confirm .big{font-weight:700; font-size:26px; margin-bottom:12px;}
   .cart-confirm .sub{font-size:15px; color:#5a5a56; margin-bottom:14px; line-height:1.6; max-width:32ch; margin-left:auto; margin-right:auto;}
   .cart-confirm .num{font-weight:700; color:var(--rust); font-size:20px;}
+  .cart-pay-btn{ display:inline-block; margin-top:20px; }
 
   /* ---------- ANIMATION ---------- */
   header{ transition:background 0.25s ease, border-color 0.25s ease; }
@@ -585,15 +586,19 @@
       flex-direction:column;
       justify-content:flex-start;
     }
-    .hero h1{ font-size:clamp(58px,20vw,240px); white-space:normal; }
-    .hero-title-wrap{ margin-bottom:16px; }
-    .hero-eyebrow{ margin-bottom:10px; }
-    .hero-sub{ margin-top:14px; font-size:12px; }
-    .hero-cta{ margin-top:20px; }
-    .hero-cta .btn-primary, .hero-cta .btn-secondary{ padding:11px 18px; font-size:13px; }
+    .hero h1{ font-size:clamp(28px,9vw,40px); white-space:normal; }
+    .hero-title-wrap{ margin-bottom:16px; text-align:center; }
+    .hero-eyebrow{ margin-bottom:10px; font-size:11px; max-width:230px; margin-left:auto; margin-right:auto; }
+    .hero-sub{ display:none; }
+    .hero-cta{ margin-top:20px; justify-content:center; }
+    .hero-cta .btn-primary, .hero-cta .btn-secondary{ padding:8px 14px; font-size:11px; }
     .hero-cta .btn-secondary{ width:128px; text-align:center; }
-    .flyer-btn{ width:128px; text-align:center; }
+    .flyer-btn{ width:128px; text-align:center; align-self:center; font-size:11px; }
+    .hero-meta .row{ font-size:12px; }
+    .hero-meta .label{ font-size:10px; }
     .hero-grid{ gap:20px; }
+    .hero-grid > div:first-child{ text-align:center; }
+    .hero-meta{ text-align:center; border-left:none; padding-left:0; align-items:center; }
   }
 
   /* ---------- TICKETS: MINIMIZED ---------- */
@@ -1001,8 +1006,9 @@
         <span class="pack-check">✨</span>
       </div>
       <div class="big">Order placed!</div>
-      <div class="sub">We've got your order and will follow up shortly to confirm details and payment. If you don't hear from us, reach out directly:</div>
+      <div class="sub">We've got your order. Tap below to pay now, or reach out directly if you have questions:</div>
       <div class="num">0503457268</div>
+      <a href="https://www.usexharp.io/pay/merch" class="btn-primary cart-pay-btn" target="_blank" rel="noopener">Pay now</a>
     </div>
   </div>
 </aside>
