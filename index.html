@@ -533,6 +533,8 @@
   .cart-confirm .sub{font-size:15px; color:#5a5a56; margin-bottom:14px; line-height:1.6; max-width:32ch; margin-left:auto; margin-right:auto;}
   .cart-confirm .num{font-weight:700; color:var(--rust); font-size:20px;}
   .cart-pay-btn{ display:inline-block; margin-top:20px; }
+  .confirm-total{ font-weight:700; font-size:22px; color:var(--black); }
+  .ussd-hint{ font-size:11px; color:#5a5a56; margin-top:10px; max-width:34ch; margin-left:auto; margin-right:auto; }
 
   /* ---------- ANIMATION ---------- */
   header{ transition:background 0.25s ease, border-color 0.25s ease; }
@@ -1006,9 +1008,12 @@
         <span class="pack-check">✨</span>
       </div>
       <div class="big">Order placed!</div>
-      <div class="sub">We've got your order. Tap below to pay now, or reach out directly if you have questions:</div>
+      <div class="sub">We've got your order. Amount to pay:</div>
+      <div class="confirm-total" id="confirmTotal">GHS 0</div>
+      <a href="tel:*920*46*68%23" class="btn-primary cart-pay-btn">Pay now with MoMo</a>
+      <div class="ussd-hint">Dial <strong>*920*46*68#</strong> and enter the exact total above when prompted.</div>
+      <div class="sub" style="margin-top:14px;">Questions? Reach out directly:</div>
       <div class="num">0503457268</div>
-      <a href="https://www.usexharp.io/pay/merch" class="btn-primary cart-pay-btn" target="_blank" rel="noopener">Pay now</a>
     </div>
   </div>
 </aside>
@@ -1404,6 +1409,7 @@
 
       document.getElementById('cartForm').style.display = 'none';
       document.getElementById('cartConfirm').classList.add('show');
+      document.getElementById('confirmTotal').textContent = 'GHS ' + total;
       drawer.classList.add('order-complete');
 
       cart = [];
