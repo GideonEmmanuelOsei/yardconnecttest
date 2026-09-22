@@ -121,6 +121,7 @@
     margin-bottom:18px;
   }
   .hero-title-wrap{ margin-bottom:36px; }
+  .hero-title-art{ display:none; }
   .hero h1{
     font-size:clamp(52px,16vw,240px);
     line-height:0.92;
@@ -576,31 +577,49 @@
     .footer-bottom{ font-size:10px; flex-wrap:nowrap; gap:8px; }
     .footer-grid{ justify-content:center; text-align:center; }
     .footer-logo{ font-size:clamp(20px,7vw,46px); white-space:nowrap; }
-  }
-  @media (max-width:520px){
-    .merch-grid{grid-template-columns:1fr;}
-    .tickets{grid-template-columns:1fr;}
+
     .hero{
-      padding:56px 0 32px;
+      --hero-stack:16px;
+      padding:40px 0;
       min-height:calc(100vh - var(--header-h, 64px));
       min-height:calc(100dvh - var(--header-h, 64px));
       display:flex;
       flex-direction:column;
-      justify-content:flex-start;
+      justify-content:center;
+      gap:var(--hero-stack);
+      text-align:center;
     }
-    .hero h1{ font-size:clamp(28px,9vw,40px); white-space:normal; }
-    .hero-title-wrap{ margin-bottom:16px; text-align:center; }
-    .hero-eyebrow{ margin-bottom:10px; font-size:11px; max-width:230px; margin-left:auto; margin-right:auto; }
+    .hero > .wrap{ width:100%; }
+    .hero h1{ font-size:clamp(28px,9vw,64px); white-space:normal; text-wrap:balance; }
+    .hero-title-wrap{ margin-bottom:0; }
+    .hero-title-art{
+      display:block;
+      width:100%;
+      max-width:220px;
+      margin:0 auto;
+      aspect-ratio:800/474;
+      background:url('hero-title.webp') center/contain no-repeat;
+    }
+    .hero-eyebrow, .hero h1{
+      position:absolute;
+      width:1px; height:1px;
+      margin:0; padding:0;
+      overflow:hidden;
+      clip-path:inset(50%);
+      white-space:nowrap;
+    }
     .hero-sub{ display:none; }
-    .hero-cta{ margin-top:20px; justify-content:center; }
-    .hero-cta .btn-primary, .hero-cta .btn-secondary{ padding:8px 14px; font-size:11px; }
-    .hero-cta .btn-secondary{ width:128px; text-align:center; }
-    .flyer-btn{ width:128px; text-align:center; align-self:center; font-size:11px; }
+    .hero-grid{ gap:var(--hero-stack); }
+    .hero-cta{ margin-top:0; justify-content:center; gap:var(--hero-stack); }
+    .hero-cta .btn-primary, .hero-cta .btn-secondary, .flyer-btn{ width:112px; padding:10px 12px; font-size:11px; text-align:center; white-space:nowrap; }
+    .hero-meta{ gap:var(--hero-stack); border-left:none; padding-left:0; align-items:center; }
     .hero-meta .row{ font-size:12px; }
     .hero-meta .label{ font-size:10px; }
-    .hero-grid{ gap:20px; }
-    .hero-grid > div:first-child{ text-align:center; }
-    .hero-meta{ text-align:center; border-left:none; padding-left:0; align-items:center; }
+    .flyer-btn{ margin-top:0; align-self:center; }
+  }
+  @media (max-width:520px){
+    .merch-grid{grid-template-columns:1fr;}
+    .tickets{grid-template-columns:1fr;}
   }
 
   /* ---------- TICKETS: MINIMIZED ---------- */
@@ -706,6 +725,7 @@
     <div class="hero-video-overlay"></div>
     <div class="wrap">
       <div class="hero-title-wrap">
+        <div class="hero-title-art" aria-hidden="true"></div>
         <div class="hero-eyebrow">Live yours with us, one night of RAVE!</div>
         <h1>YARD CONNECT</h1>
       </div>
@@ -831,7 +851,7 @@
           </div>
           <div class="ticket-tear"></div>
           <div class="ticket-bottom">
-            <div class="ticket-price">GHS 80</div>
+            <div class="ticket-price">GHS 85</div>
           </div>
         </div>
 
@@ -876,7 +896,7 @@
           </div>
           <div class="ticket-tear"></div>
           <div class="ticket-bottom">
-            <div class="ticket-price">GHS 500</div>
+            <div class="ticket-price">GHS 600</div>
           </div>
         </div>
 
